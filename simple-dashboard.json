@@ -1,0 +1,90 @@
+{
+	"dashboard": {
+		"id": null,
+		"title": "萌娘百科壁纸站监控",
+		"tags": ["spring-boot", "monitoring"],
+		"timezone": "browser",
+		"refresh": "5s",
+		"time": {
+			"from": "now-1h",
+			"to": "now"
+		},
+		"panels": [
+			{
+				"id": 1,
+				"title": "JVM Memory Usage",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+				"targets": [
+					{
+						"expr": "jvm_memory_used_bytes{application=\"wallpaper-backend\"}",
+						"legendFormat": "{{area}} - {{id}}",
+						"refId": "A"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"unit": "bytes"
+					}
+				}
+			},
+			{
+				"id": 2,
+				"title": "JVM Threads",
+				"type": "stat",
+				"gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+				"targets": [
+					{
+						"expr": "jvm_threads_live_threads{application=\"wallpaper-backend\"}",
+						"legendFormat": "Live Threads",
+						"refId": "A"
+					}
+				]
+			},
+			{
+				"id": 3,
+				"title": "CPU Usage",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+				"targets": [
+					{
+						"expr": "system_cpu_usage{application=\"wallpaper-backend\"} * 100",
+						"legendFormat": "System CPU",
+						"refId": "A"
+					},
+					{
+						"expr": "process_cpu_usage{application=\"wallpaper-backend\"} * 100",
+						"legendFormat": "Process CPU",
+						"refId": "B"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"unit": "percent"
+					}
+				}
+			},
+			{
+				"id": 4,
+				"title": "HTTP Requests Rate",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+				"targets": [
+					{
+						"expr": "rate(http_server_requests_seconds_count{application=\"wallpaper-backend\"}[5m])",
+						"legendFormat": "{{method}} {{uri}}",
+						"refId": "A"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"unit": "reqps"
+					}
+				}
+			}
+		],
+		"schemaVersion": 30,
+		"version": 1
+	},
+	"overwrite": true
+}

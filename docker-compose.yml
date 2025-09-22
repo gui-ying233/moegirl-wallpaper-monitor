@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+    prometheus:
+        image: prom/prometheus:latest
+        container_name: moegirl-prometheus
+        ports:
+            - "9090:9090"
+        volumes:
+            - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+            - prometheus_data:/prometheus
+        command:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+            - "--web.console.libraries=/etc/prometheus/console_libraries"
+            - "--web.console.templates=/etc/prometheus/consoles"
+            - "--web.enable-lifecycle"
+            - "--web.enable-admin-api"
+        restart: unless-stopped
+        networks:
+            - monitoring
+
+    grafana:
+        image: grafana/grafana:latest
+        container_name: moegirl-grafana
+        ports:
+            - "3000:3000"
+        volumes:
+            - grafana_data:/var/lib/grafana
+            - ./grafana/provisioning:/etc/grafana/provisioning
+            - ./grafana/dashboards:/var/lib/grafana/dashboards
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=admin123
+            - GF_USERS_ALLOW_SIGN_UP=false
+            - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+        restart: unless-stopped
+        networks:
+            - monitoring
+        depends_on:
+            - prometheus
+
+volumes:
+    prometheus_data:
+    grafana_data:
+
+networks:
+    monitoring:
+        driver: bridge
