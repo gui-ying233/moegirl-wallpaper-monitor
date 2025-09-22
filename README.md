@@ -1,6 +1,6 @@
-# 萌娘百科壁纸站监控系统
+# 傲娇壁纸监控系统
 
-这是一个基于 Prometheus + Grafana 的监控方案，用于监控萌娘百科壁纸站的 Spring Boot 应用性能指标，完全由 AI 生成。
+这是一个基于 Prometheus + Grafana 的监控方案，用于监控傲娇壁纸的 Spring Boot 应用性能指标，完全由 AI 生成。
 
 ## 📋 功能特性
 
