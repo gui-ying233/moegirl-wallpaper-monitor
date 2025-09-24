@@ -10,10 +10,13 @@ scrape_configs:
       scrape_interval: 30s
       scrape_timeout: 10s
       static_configs:
-          - targets: ["wallpaper.moegirl.org.cn"]
+          - targets: ["wallpaper.moegirl.org.cn", "aoki-wallpaper.aojiaostudio.com"]
       scheme: https
       honor_labels: true
       relabel_configs:
+          - source_labels: [__address__]
+            target_label: "endpoint"
+            replacement: "${1}"
           - target_label: "instance"
             replacement: "moegirl-wallpaper-backend"
           - target_label: "service"
