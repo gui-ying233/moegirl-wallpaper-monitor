@@ -4,17 +4,17 @@
 
 ## 📋 功能特性
 
--   **实时监控**: 每 30 秒抓取一次应用指标
--   **全面指标**: 监控 JVM、HTTP 请求、数据库、系统资源等
--   **可视化界面**: 预配置的 Grafana 仪表板
--   **开箱即用**: Docker Compose 一键部署
+- **实时监控**: 每 30 秒抓取一次应用指标
+- **全面指标**: 监控 JVM、HTTP 请求、数据库、系统资源等
+- **可视化界面**: 预配置的 Grafana 仪表板
+- **开箱即用**: Docker Compose 一键部署
 
 ## 🚀 快速开始
 
 ### 前提条件
 
--   Docker 和 Docker Compose
--   网络连接（需要访问 wallpaper.moegirl.org.cn）
+- Docker 和 Docker Compose
+- 网络连接（需要访问 wallpaper.moegirl.org.cn）
 
 ### 启动监控
 
@@ -31,10 +31,10 @@ docker-compose up -d
 
 ### 访问界面
 
--   **Prometheus**: http://localhost:9090
--   **Grafana**: http://localhost:3000
-    -   用户名: `admin`
-    -   密码: `admin123`
+- **Prometheus**: http://localhost:9090
+- **Grafana**: http://localhost:1029
+  - 用户名: `admin`
+  - 密码: `admin123`
 
 ### 停止监控
 
@@ -46,22 +46,22 @@ docker-compose down
 
 ### JVM 指标
 
--   内存使用情况（堆内存、非堆内存）
--   垃圾回收性能
--   线程状态和数量
--   类加载情况
+- 内存使用情况（堆内存、非堆内存）
+- 垃圾回收性能
+- 线程状态和数量
+- 类加载情况
 
 ### 应用指标
 
--   HTTP 请求率和响应时间
--   Spring Data Repository 调用时间
--   Tomcat 会话管理
--   系统 CPU 和负载
+- HTTP 请求率和响应时间
+- Spring Data Repository 调用时间
+- Tomcat 会话管理
+- 系统 CPU 和负载
 
 ### 数据库指标
 
--   MongoDB 连接池状态
--   数据库操作性能
+- MongoDB 连接池状态
+- 数据库操作性能
 
 ## 🛠️ 自定义配置
 
@@ -124,6 +124,6 @@ docker-compose logs grafana
 
 ## 🔗 相关链接
 
--   [Prometheus 官方文档](https://prometheus.io/docs/)
--   [Grafana 官方文档](https://grafana.com/docs/)
--   [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
+- [Prometheus 官方文档](https://prometheus.io/docs/)
+- [Grafana 官方文档](https://grafana.com/docs/)
+- [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
